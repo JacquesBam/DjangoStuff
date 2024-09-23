@@ -1,0 +1,20 @@
+{% extends 'home.html' %}
+
+{% block items %}
+{% for book in searched_list %}
+    <div class="d-flex flex-row justify-content-centre mt-2" style="height: 40%;">
+
+      <div class="col-1 overflow-hidden m-3 border border-secondary" style="height: 95%; width: 20%;">
+        <img src="{{ book.t_nail.url }}" class="img-fluid" alt="...">
+      </div>
+
+      <div class="card m-2 col-3" style="height: 100%; width: 73%; background-color: wheat;">
+        <div class="card-body">
+            <h4><a class="link-dark" href="{% url 'detail' book.b_id %}"> {{book.title}} </a></h4>
+            <h6><a class="link-dark" href="{% url 'author_detail' book.author_id.author_id %}"> {{book.author_id.author_name}} </a></h6>
+            <h6 class="card-subtitle mb-2 text-muted ">{{ book.blurb }}</h6>
+        </div>
+      </div>
+  </div>
+{% endfor %}
+{% endblock %}
